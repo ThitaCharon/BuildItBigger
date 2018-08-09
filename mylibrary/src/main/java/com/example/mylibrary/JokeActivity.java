@@ -6,13 +6,14 @@ import android.widget.Toast;
 
 public class JokeActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joke);
 
-        String myJoke = getIntent().getStringExtra("joke");
-        Toast.makeText(this, myJoke, Toast.LENGTH_SHORT).show();
+         String myJoke = getIntent().getStringExtra("joke");
+         Toast.makeText(this, myJoke, Toast.LENGTH_SHORT).show();
 
 
     }
