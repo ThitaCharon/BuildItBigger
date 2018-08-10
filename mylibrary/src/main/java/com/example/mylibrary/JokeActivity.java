@@ -15,6 +15,5 @@ public class JokeActivity extends AppCompatActivity {
          String myJoke = getIntent().getStringExtra("joke");
          Toast.makeText(this, myJoke, Toast.LENGTH_SHORT).show();
 
-
     }
 }

@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 import android.util.Pair;
 
-import com.example.joker.MyJoker;
+//import com.example.joker.MyJoker;
 import com.example.mylibrary.JokeActivity;
 
 
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void tellJoke(View view) {
 
-        String myJoke = new MyJoker().getJoke();
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, myJoke));
+//        String myJoke = new MyJoker().getJoke();
+        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "have fun with my joke"));
 
 
         /** step 1 & 2
