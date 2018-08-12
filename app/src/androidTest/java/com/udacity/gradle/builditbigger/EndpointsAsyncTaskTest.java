@@ -1,46 +1,38 @@
 package com.udacity.gradle.builditbigger;
 
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
-
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import org.junit.Rule;
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
+import android.util.Pair;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import java.util.concurrent.CountDownLatch;
+
 import static org.junit.Assert.*;
 
-@RunWith(AndroidJUnit4.class)
+@RunWith(JUnit4.class)
 public class EndpointsAsyncTaskTest {
 
-    @Rule
-    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+    private Context context;
 
     @Test
-    public void EndpointAsyncTaskTest() {
-
-        onView(withId(R.id.telling_joke_btn)).check(matches(withText(R.string.button_text)));
-
-        /**
-         String result = null;
-         EndpointsAsyncTask asyncTaskJoke = new EndpointsAsyncTask();
-         asyncTaskJoke.execute();
-         try{
-         result = asyncTaskJoke.get();
-         Log.d("testing", "Retrieved a non-empty string successfully: " + result);
-         } catch (InterruptedException e) {
-         e.printStackTrace();
-         } catch (ExecutionException e) {
-         e.printStackTrace();
-         }
-         assertNotNull(result);
-         **/
-
+    public void testVerifyJoke() throws InterruptedException {
+        assertTrue(true);
+        final CountDownLatch latch = new CountDownLatch(1);
+        context = InstrumentationRegistry.getContext();
+        EndpointsAsyncTask testTask = new EndpointsAsyncTask() {
+            @Override
+            protected void onPostExecute(String result) {
+                assertNotNull(result);
+                assertTrue(result.length() > 0);
+                latch.countDown();
+            }
+        };
+        testTask.execute(Pair.create(context,"my joke"));
+        latch.await();
     }
 
-
 }
+
+
