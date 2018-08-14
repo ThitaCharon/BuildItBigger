@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.Toast;
 import android.util.Pair;
 
-//import com.example.joker.MyJoker;
-import com.example.mylibrary.JokeActivity;
 
 
 public class MainActivity extends AppCompatActivity {
