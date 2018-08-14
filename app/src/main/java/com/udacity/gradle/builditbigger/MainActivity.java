@@ -10,14 +10,14 @@ import android.view.View;
 import android.widget.Toast;
 import android.util.Pair;
 
-
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MainActivityFragment fragment = new MainActivityFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment, fragment).commit();
     }
 
 
